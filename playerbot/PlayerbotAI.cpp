@@ -4010,6 +4010,9 @@ bool PlayerbotAI::IsTellAllowed(Player* player, PlayerbotSecurityLevel securityL
 
 bool PlayerbotAI::TellPlayer(Player* player, std::string text, PlayerbotSecurityLevel securityLevel, bool isPrivate, bool ignoreSilent)
 {
+    if (!player || !player->IsInWorld())
+        return false;
+
     if (!TellPlayerNoFacing(player, text, securityLevel, isPrivate, ignoreSilent))
         return false;
 
